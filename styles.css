@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(180deg, #ffd6e0, #fff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+
+.background-hearts::before,
+.background-hearts::after {
+  content: "💖 💕 💗 💞 💓";
+  position: fixed;
+  width: 100%;
+  left: 0;
+  font-size: 1.8rem;
+  opacity: 0.15;
+  animation: float 14s linear infinite;
+}
+
+.background-hearts::after {
+  animation-duration: 20s;
+}
+
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-120vh); }
+}
+
+.envelope {
+  position: relative;
+  width: 90%;
+  max-width: 380px;
+  height: 220px;
+  background: #f8b4c4;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: height 1s ease;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f497b6;
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+  transform-origin: top;
+  z-index: 3;
+
+  transition: transform 0.6s ease;
+}
+
+
+.letter {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 0;
+  background: #fff;
+  border-radius: 18px;
+  padding: 0 24px;
+  overflow: hidden;
+  text-align: center;
+  z-index: 2;
+
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition:
+    height 1s ease,
+    box-shadow 0.6s ease;
+}
+
+
+
+.letter h1 {
+  font-family: 'Playfair Display', serif;
+  color: #d6336c;
+  margin-top: 25px;
+}
+
+.letter p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.intro {
+  font-style: italic;
+  color: #666;
+}
+
+.firma {
+  margin-top: 24px;
+  font-family: 'Playfair Display', serif;
+}
+
+.firma span {
+  color: #d6336c;
+}
+
+
+
+.envelope.open {
+  height: 520px;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+.envelope.open .letter {
+  height: 100%;
+  padding-top: 20px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  animation: bounceDown 0.8s ease;
+  transition-delay: 0.3s;
+}
+
+
+
+.tap {
+  margin-top: 18px;
+  font-size: 0.9rem;
+  color: #777;
+}
+@keyframes bounceDown {
+  0%   { transform: translateY(-20px); }
+  60%  { transform: translateY(6px); }
+  80%  { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
