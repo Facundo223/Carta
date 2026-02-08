@@ -5,179 +5,102 @@
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Montserrat', sans-serif;
   background: linear-gradient(180deg, #ffd6e0, #fff);
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  overflow-x: hidden;
+  padding: 30px 0;
 }
 
-
-.background-hearts::before,
-.background-hearts::after {
+/* 💕 fondo */
+.background-hearts::before {
   content: "💖 💕 💗 💞 💓";
   position: fixed;
+  top: 0;
   width: 100%;
-  left: 0;
-  font-size: 1.8rem;
+  text-align: center;
   opacity: 0.15;
-  animation: float 14s linear infinite;
 }
 
-.background-hearts::after {
-  animation-duration: 20s;
-}
-
-@keyframes float {
-  from { transform: translateY(100vh); }
-  to { transform: translateY(-120vh); }
-}
-
+/* ✉️ sobre */
 .envelope {
-  position: relative;
-  width: 90%;
-  max-width: 380px;
+  width: 280px;
+  height: 180px;
   background: #f8b4c4;
   border-radius: 18px;
+  position: relative;
   cursor: pointer;
   box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-
-  height: 220px;          
-  overflow: hidden;
-  transition: height 1s ease;
+  margin-bottom: 20px;
 }
-
-
 
 .flap {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #f497b6;
   clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
   transform-origin: top;
-  z-index: 3;
-
   transition: transform 0.6s ease;
 }
 
-
+/* 💌 carta */
 .letter {
-  position: relative;
-  width: 100%;
+  width: 90%;
+  max-width: 380px;
   background: #fff;
-  border-radius: 18px;
-  padding: 20px 24px 30px;
+  border-radius: 22px;
+  padding: 30px 24px;
   text-align: center;
-  z-index: 2;
-
-  transform: translateY(-100%);
-  animation: none;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+  margin-top: 10px;
+  opacity: 0;
+  transform: translateY(-40px);
+  transition: all 0.8s ease;
+  pointer-events: none;
 }
-
-
 
 .letter h1 {
   font-family: 'Playfair Display', serif;
   color: #d6336c;
-  margin-top: 25px;
 }
 
 .letter p {
-  font-size: 0.95rem;
   line-height: 1.7;
-  color: #444;
-  margin-bottom: 16px;
-}
-
-.intro {
-  font-style: italic;
-  color: #666;
-}
-
-.firma {
-  margin-top: 24px;
-  font-family: 'Playfair Display', serif;
+  margin-bottom: 18px;
 }
 
 .firma span {
   color: #d6336c;
 }
 
-
-
-.envelope.open {
-  height: auto;         
+.sorpresa {
+  margin-top: 30px;
+  font-style: italic;
+  color: #d6336c;
 }
 
 
-.envelope.open.show-sorpresa {
-  height: 680px;
+.open + .letter {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-
-.envelope.open .flap {
+.open .flap {
   transform: rotateX(180deg);
 }
 
-.envelope.open .letter {
-  animation: slideDown 0.9s ease forwards;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-
-
 .tap {
-  margin-top: 18px;
-  font-size: 0.9rem;
+  margin-top: 15px;
   color: #777;
 }
-@keyframes bounceDown {
-  0%   { transform: translateY(-20px); }
-  60%  { transform: translateY(6px); }
-  80%  { transform: translateY(-3px); }
-  100% { transform: translateY(0); }
-}
-.hidden {
-  display: none;
+
+.envelope.hide {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
 }
 
-.sorpresa {
-  margin-top: 26px;
-  font-size: 0.95rem;
-  color: #d6336c;
-  font-style: italic;
-  animation: fadeInSoft 1.5s ease forwards;
-}
-
-.tap-sorpresa {
-  margin-top: 18px;
-  font-size: 0.85rem;
-  color: #999;
-  cursor: pointer;
-}
-
-@keyframes fadeInSoft {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
