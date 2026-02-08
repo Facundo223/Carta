@@ -13,7 +13,7 @@ body {
   padding: 30px 0;
 }
 
-/* 💕 fondo */
+
 .background-hearts::before {
   content: "💖 💕 💗 💞 💓";
   position: fixed;
@@ -23,7 +23,7 @@ body {
   opacity: 0.15;
 }
 
-/* ✉️ sobre */
+
 .envelope {
   width: 280px;
   height: 180px;
@@ -44,7 +44,7 @@ body {
   transition: transform 0.6s ease;
 }
 
-/* 💌 carta */
+
 .letter {
   width: 90%;
   max-width: 380px;
@@ -53,11 +53,10 @@ body {
   padding: 30px 24px;
   text-align: center;
   box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-  margin-top: 10px;
+
   opacity: 0;
   transform: translateY(-40px);
-  transition: all 0.8s ease;
-  pointer-events: none;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .letter h1 {
@@ -102,5 +101,8 @@ body {
   transition: opacity 0.6s ease, transform 0.6s ease;
   pointer-events: none;
 }
-
+.letter.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
