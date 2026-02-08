@@ -3,7 +3,7 @@ const sorpresa = document.getElementById("sorpresa");
 const tapSorpresa = document.querySelector(".tap-sorpresa");
 
 envelope.addEventListener("click", () => {
-  envelope.classList.toggle("open");
+  envelope.classList.add("open");
 });
 
 tapSorpresa.addEventListener("click", (e) => {
