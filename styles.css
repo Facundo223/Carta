@@ -72,7 +72,7 @@ body {
   background: #fff;
   border-radius: 18px;
   padding: 0 24px;
-  overflow: hidden;
+  overflow-y: auto;
   text-align: center;
   z-index: 2;
 
@@ -114,8 +114,14 @@ body {
 
 
 .envelope.open {
-  height: 520px;
+  height: 600px;
+  transition: height 1s ease;
 }
+
+.envelope.open.show-sorpresa {
+  height: 680px;
+}
+
 
 .envelope.open .flap {
   transform: rotateX(180deg);
@@ -142,3 +148,33 @@ body {
   80%  { transform: translateY(-3px); }
   100% { transform: translateY(0); }
 }
+.hidden {
+  display: none;
+}
+
+.sorpresa {
+  margin-top: 26px;
+  font-size: 0.95rem;
+  color: #d6336c;
+  font-style: italic;
+  animation: fadeInSoft 1.5s ease forwards;
+}
+
+.tap-sorpresa {
+  margin-top: 18px;
+  font-size: 0.85rem;
+  color: #999;
+  cursor: pointer;
+}
+
+@keyframes fadeInSoft {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
